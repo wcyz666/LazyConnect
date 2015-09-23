@@ -1,0 +1,45 @@
+{
+  "name": "AutomaticCMULgin",
+  "manifest_version": 2,
+
+  "version": "0.1",
+
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+
+  "description": "For CMU students",
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+
+  "browser_action": {
+    "default_icon": "icons/icon48.png",
+    "default_popup": "popup.html"
+  },
+
+  "icons": {
+    "128": "icons/icon128.png",
+    "48": "icons/icon48.png",
+    "16": "icons/icon16.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://login.cmu.edu/idp/Authn/Stateless",
+                    "https://autolab.cs.cmu.edu/auth/users/sign_in",
+                    "https://oli.cmu.edu/",
+                    "http://oli.cmu.edu/",
+                    "https://oli.cmu.edu/jcourse/webui/welcome.do*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ]
+}
